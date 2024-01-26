@@ -5,7 +5,6 @@ import { randomUUID } from 'crypto'
 
 export async function POST(request: NextRequest) {
   const data = await request.formData()
-  console.log(data)
   const file: File | null = data.get('cover') as unknown as File
   let path = "";
   let filename = "";
