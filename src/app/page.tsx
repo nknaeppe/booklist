@@ -13,7 +13,7 @@ export default async function Home() {
   
   return ( 
     <>
-      <main className="my-20 mx-20 flex flex-wrap justify-center gap-4 p-4">
+      <main className="my-20 mx-20 flex flex-wrap justify-center gap-4 p-4 h-screen">
         {
           books.map( book => <Bookcard book={book} key={book.id}></Bookcard>)
         }

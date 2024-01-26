@@ -16,4 +16,5 @@ model Book {
   cover         String
   rating        Int
   information   String
+  tags          String[]
 }
