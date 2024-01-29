@@ -1,8 +1,9 @@
 import React from 'react'
 import Image from "next/image"
-import ReactStars from 'react-stars'
-interface Book {
-    id: number,
+import SettingsMenu from './menu';
+
+export interface Book {
+    id: String,
     title: string,
     author: string,
     cover: string
@@ -11,7 +12,7 @@ interface Book {
     tags: string[]
 }
 
-interface BookcardProps {
+export interface BookcardProps {
     book: Book;
 }
 
@@ -19,6 +20,7 @@ const Bookcard: React.FC<BookcardProps> = ({ book }) => {
 
     return (
         <div className="max-w-sm rounded overflow-hidden shadow-lg">
+            <SettingsMenu bookId={book.id}></SettingsMenu>
             <Image className="w-full" height={400} width={200} src={`/tmp/` + book.cover} alt="Sunset in the mountains" ></Image>
             <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-2">{book.title}</div>
@@ -29,7 +31,7 @@ const Bookcard: React.FC<BookcardProps> = ({ book }) => {
             <div className="px-6 pt-4 pb-2">
                 {
                     Array.from(Array(5).keys()).map(star => {
-                        if (star <= book.rating) {
+                        if (star < book.rating) {
                             return '★';
                         } else {
                             return '☆'
@@ -41,7 +43,11 @@ const Bookcard: React.FC<BookcardProps> = ({ book }) => {
                 {
                     book.tags ?
                         book.tags.map(
-                            tag => <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{tag}</span>
+                            (tag: string, index: number) =>
+                                <span
+                                    key={index}
+                                    className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+                                >{tag}</span>
                         )
                         : ""
                 }
