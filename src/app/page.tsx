@@ -1,4 +1,4 @@
-import Bookcard from "./components/bookcard";
+import Bookcard from "./components/Bookcard";
 import prisma from './lib/prisma';
 
 interface Book {

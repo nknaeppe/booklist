@@ -10,7 +10,6 @@ const SettingsMenu: React.FC<SettingsMenuProps> = ({ bookId }) => {
         const deletedBook = await fetch('/api/delete?' + new URLSearchParams({
             id: bookId
         }), { method: 'DELETE' });
-
     }
     return (
         <Menu as="div" className="">
@@ -23,28 +22,29 @@ const SettingsMenu: React.FC<SettingsMenuProps> = ({ bookId }) => {
                 <div className="px-1 py-1 ">
                     <Menu.Item>
                         {({ active }) => (
-                            <button
+                            <a
+                                href={'/edit/' + bookId}
                                 className={`${active ? 'bg-black/30 text-white' : 'text-gray-900'
-                                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                            } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                             >
-                                Edit
-                            </button>
+                        Edit
+                    </a>
                         )}
-                    </Menu.Item>
-                    <Menu.Item>
-                        {({ active }) => (
-                            <button
-                                className={`${active ? 'bg-black/30 text-white' : 'text-gray-900'
-                                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                                onClick={deleteBook}
-                            >
-                                Delete
-                            </button>
-                        )}
-                    </Menu.Item>
-                </div>
-            </Menu.Items>
-        </Menu>
+                </Menu.Item>
+                <Menu.Item>
+                    {({ active }) => (
+                        <button
+                            className={`${active ? 'bg-black/30 text-white' : 'text-gray-900'
+                                } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                            onClick={deleteBook}
+                        >
+                            Delete
+                        </button>
+                    )}
+                </Menu.Item>
+            </div>
+        </Menu.Items>
+        </Menu >
     )
 }
 

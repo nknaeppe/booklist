@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from "next/image"
-import SettingsMenu from './menu';
+import SettingsMenu from './SettingsMenu';
 
 export interface Book {
     id: String,

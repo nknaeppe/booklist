@@ -1,7 +1,7 @@
 "use client"
 import React, { ChangeEvent, useEffect } from 'react'
 import { useState } from 'react'
-import TagsInput from '../components/tagsinput';
+import TagsInput from '../components/Tagsinput';
 
 const NewBook = () => {
     const [formData, setFormData] = useState({
@@ -47,8 +47,8 @@ const NewBook = () => {
 
 
     return (
-        <main className="my-20 mx-20 flex flex-wrap justify-center gap-4 p-4 h-screen">
-
+        <main className="my-20 mx-20 flex flex-col flex-wrap justify-center gap-4 p-4 h-screen">
+<h1 className='font-bold text-center text-3xl'>Add a new Book</h1>
             <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
                 <div className="mb-5">
                     <label className="block mb-2 text-sm font-medium text-gray-900 ">
@@ -71,7 +71,6 @@ const NewBook = () => {
                             name="author"
                             value={formData.author}
                             onChange={handleChange} />
-
                     </label>
                 </div>
                 <div className="mb-5">

@@ -2,13 +2,13 @@ import prisma from "@/app/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
 
-export async function DELETE(request: NextRequest) {
+export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
-    await prisma.book.delete({
+    const book = await prisma.book.findFirst({
         where: {
             id: searchParams.get("id")
         },
     });
 
-    return NextResponse.json({ success: true })
+    return NextResponse.json(book)
 }
