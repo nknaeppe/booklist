@@ -23,12 +23,12 @@ const TagsInput = ({ tags, setTags }) => {
     return (
         <>
             <div className='flex flex-row gap-2 m-2'>
-                {tags.map((tag, index) => (
+                {tags ? tags.map((tag, index) => (
                     <div key={index}>
                         <span className="text">{tag}</span>
                         <span className="close" onClick={() => removeTag(index)}>&times;</span>
                     </div>
-                ))}
+                )) : ""}
             </div>
 
             <input type="text"

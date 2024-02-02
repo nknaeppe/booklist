@@ -25,25 +25,25 @@ const SettingsMenu: React.FC<SettingsMenuProps> = ({ bookId }) => {
                             <a
                                 href={'/edit/' + bookId}
                                 className={`${active ? 'bg-black/30 text-white' : 'text-gray-900'
-                            } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                             >
-                        Edit
-                    </a>
+                                Edit
+                            </a>
                         )}
-                </Menu.Item>
-                <Menu.Item>
-                    {({ active }) => (
-                        <button
-                            className={`${active ? 'bg-black/30 text-white' : 'text-gray-900'
-                                } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                            onClick={deleteBook}
-                        >
-                            Delete
-                        </button>
-                    )}
-                </Menu.Item>
-            </div>
-        </Menu.Items>
+                    </Menu.Item>
+                    <Menu.Item>
+                        {({ active }) => (
+                            <button
+                                className={`${active ? 'bg-black/30 text-white' : 'text-gray-900'
+                                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                                onClick={deleteBook}
+                            >
+                                Delete
+                            </button>
+                        )}
+                    </Menu.Item>
+                </div>
+            </Menu.Items>
         </Menu >
     )
 }

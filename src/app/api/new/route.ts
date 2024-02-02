@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
     await writeFile(path, buffer)
   }
 
-  const user = await prisma.book.create(
+  const book = await prisma.book.create(
     {
       data: {
         title: data.get("title").toString(),

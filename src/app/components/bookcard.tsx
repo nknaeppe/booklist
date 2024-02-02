@@ -1,16 +1,7 @@
 import React from 'react'
 import Image from "next/image"
 import SettingsMenu from './SettingsMenu';
-
-export interface Book {
-    id: String,
-    title: string,
-    author: string,
-    cover: string
-    rating: number,
-    information: string,
-    tags: string[]
-}
+import Book from './Book';
 
 export interface BookcardProps {
     book: Book;
