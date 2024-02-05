@@ -17,13 +17,13 @@ const TagsInput = ({ tags, setTags }) => {
         e.target.value = ''
         console.log(tags)
     }
-    function removeTag(index) {
-        setTags(tags.filter((el, i) => i !== index))
+    function removeTag(index: number) {
+        setTags(tags.filter((el, i: number) => i !== index))
     }
     return (
         <>
             <div className='flex flex-row gap-2 m-2'>
-                {tags ? tags.map((tag, index) => (
+                {tags ? tags.map((tag: string, index: number) => (
                     <div key={index}>
                         <span className="text">{tag}</span>
                         <span className="close" onClick={() => removeTag(index)}>&times;</span>

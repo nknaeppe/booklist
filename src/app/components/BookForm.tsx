@@ -25,15 +25,15 @@ const BookForm: React.FC<BookcardProps> = ({ book, isEdit }) => {
     useEffect(() => {
         if (isEdit) {
             setFormData({
-                title: book.title,
-                author: book.author,
-                tags: book.tags,
+                title: book?.title,
+                author: book?.author,
+                tags: book?.tags,
                 cover: null,
-                rating: book.rating,
-                information: book.information
+                rating: book?.rating,
+                information: book?.information
             })
-            if (book.tags) {
-                setTags(book.tags)
+            if (book?.tags) {
+                setTags(book?.tags)
             }
         }
     }, [])

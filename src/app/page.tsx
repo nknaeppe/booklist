@@ -1,13 +1,8 @@
-import Bookcard from "./components/Bookcard";
+import Bookcard from './components/bookcard';
 import prisma from './lib/prisma';
+import Book from "./components/Book";
 
-interface Book {
-  title: string;
-  author: string;
-  cover: string;
-  rating: number;
-  information: string
-}
+
 export default async function Home() {
   const books = await prisma.book.findMany();
   
@@ -15,7 +10,7 @@ export default async function Home() {
     <>
       <main className="my-20 mx-20 flex flex-wrap justify-center gap-4 p-4 h-screen">
         {
-          books.map( book => <Bookcard book={book} key={book.id}></Bookcard>)
+          books.map( (book: Book) => <Bookcard book={book} key={book.id}></Bookcard>)
         }
       </main>
     </>
