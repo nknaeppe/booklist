@@ -10,13 +10,13 @@ export default async function EditBook({ params }: { params: { id: string } }) {
       <h1 className='font-bold text-center text-3xl mt-16'>Edit Book</h1>
       <div className="flex flex-row justify-center gap-4">
         <div className="h-40 w-80">
-          <Image
+          {book?.cover ? <Image
             src={`/tmp/` + book.cover}
             alt="book cover"
             width={500}
             height={500}
             className="rounded-md"
-          />
+          /> : <></>}
         </div>
         <BookForm book={book} isEdit={true}> </BookForm>
       </div>

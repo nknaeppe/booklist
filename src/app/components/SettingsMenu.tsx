@@ -1,16 +1,12 @@
 "use client"
 import { Menu } from '@headlessui/react'
-
+import { deleteBook } from '../lib/BookService';
 interface SettingsMenuProps {
     bookId: string;
 }
 
 const SettingsMenu: React.FC<SettingsMenuProps> = ({ bookId }) => {
-    const deleteBook = async () => {
-        const deletedBook = await fetch('/api/delete?' + new URLSearchParams({
-            id: bookId
-        }), { method: 'DELETE' });
-    }
+
     return (
         <Menu as="div" className="">
             <div>
@@ -36,7 +32,7 @@ const SettingsMenu: React.FC<SettingsMenuProps> = ({ bookId }) => {
                             <button
                                 className={`${active ? 'bg-black/30 text-white' : 'text-gray-900'
                                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                                onClick={deleteBook}
+                                onClick={() => deleteBook(bookId)}
                             >
                                 Delete
                             </button>

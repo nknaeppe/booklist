@@ -1,7 +1,6 @@
 import Book from "../components/Book"
 
 const createBook = async (book: Book) => {
-    console.log(book)
     try {
         const formDataToSend = new FormData();
         formDataToSend.append('title', book.title);
@@ -10,7 +9,7 @@ const createBook = async (book: Book) => {
         formDataToSend.append('information', book.information);
         formDataToSend.append('tags', JSON.stringify(book.tags))
         formDataToSend.append('cover', book.cover);
-        const response = await fetch('/api/new', {
+        const response = await fetch('/api/book', {
             method: 'POST',
             body: formDataToSend
         });
@@ -22,24 +21,11 @@ const createBook = async (book: Book) => {
 
 const updateBook = async (book: Book) => {
     try {
-        const formDataToSend = new FormData();
-        if (book.title) {
-            formDataToSend.append("title", book.title)
-        }
-        if (book.author) {
-            formDataToSend.append("author", book.author)
-        }
-        if (book.rating) {
-            formDataToSend.append("rating", book.rating.toString())
-        }
-        if (book.information) {
-            formDataToSend.append("information", book.information)
-        }
-        if (book.tags) {
-            formDataToSend.append("tags", JSON.stringify(book.tags))
-        }
-        const response = await fetch('/api/edit', {
-            method: 'UPDATE',
+        const formDataToSend = createFormData(book);
+        console.log(formDataToSend);
+
+        const response = await fetch('/api/book', {
+            method: 'PUT',
             body: formDataToSend
         });
 
@@ -48,4 +34,29 @@ const updateBook = async (book: Book) => {
     }
 }
 
-export { createBook, updateBook };
+const createFormData = (book: Book): FormData => {
+    const formDataToSend = new FormData();
+    Object.entries(book).forEach(([key, value]) => {
+        console.log(key)
+        if (value != null && value !== undefined) {
+            if (key === "tags") {
+                
+            }
+            if (key === "cover") {
+                formDataToSend.append(key, value)
+            } else {
+                formDataToSend.append(key, value.toString());
+            }
+
+        console.log(key, value)
+        }
+    });
+    return formDataToSend;
+};
+
+const deleteBook = async (bookId: string) => {
+    const deletedBook = await fetch('/api/book?' + new URLSearchParams({
+        id: bookId
+    }), { method: 'DELETE' });
+}
+export { createBook, updateBook, deleteBook };

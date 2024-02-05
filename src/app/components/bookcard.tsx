@@ -12,9 +12,10 @@ const Bookcard: React.FC<BookcardProps> = ({ book }) => {
     return (
         <div className="max-w-sm rounded overflow-hidden shadow-lg">
             <SettingsMenu bookId={book.id}></SettingsMenu>
-            <Image className="w-full" height={400} width={200} src={`/tmp/` + book.cover} alt="Sunset in the mountains" ></Image>
+            {book?.cover ? <Image className="w-full" height={400} width={200} src={`/tmp/` + book.cover} alt="book cover" ></Image> : <></>}
             <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-2">{book.title}</div>
+                <div className="font-semibold text-sm mb-2">{book.author}</div>
                 <p className="text-gray-700 text-base">
                     {book.information}
                 </p>
