@@ -3,12 +3,12 @@ import React from 'react'
 
 const TagsInput = ({ tags, setTags }) => {
 
-    function handleKeyDown(e) {
+    function handleKeyDown(e:  React.KeyboardEvent<HTMLDivElement>) {
         // If user did not press enter key, return
         if (e.key !== 'Enter') return
         e.preventDefault();
         // Get the value of the input
-        const value = "#" + e.target.value
+        const value = e.target.value
         // If the value is empty, return
         if (!value.trim()) return
         // Add the value to the tags array
@@ -18,14 +18,14 @@ const TagsInput = ({ tags, setTags }) => {
         console.log(tags)
     }
     function removeTag(index: number) {
-        setTags(tags.filter((el, i: number) => i !== index))
+        setTags(tags.filter((el: object, i: number) => i !== index))
     }
     return (
         <>
             <div className='flex flex-row gap-2 m-2'>
                 {tags ? tags.map((tag: string, index: number) => (
                     <div key={index}>
-                        <span className="text">{tag}</span>
+                        <span className="text">#{tag}</span>
                         <span className="close" onClick={() => removeTag(index)}>&times;</span>
                     </div>
                 )) : ""}
@@ -37,7 +37,6 @@ const TagsInput = ({ tags, setTags }) => {
                 onKeyDown={handleKeyDown} />
         </>
     )
-
 }
 
 export default TagsInput

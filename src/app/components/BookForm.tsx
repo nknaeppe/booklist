@@ -4,12 +4,10 @@ import TagsInput from './Tagsinput'
 import { createBook, updateBook } from '../lib/BookService'
 import Book from './Book'
 
-
 export interface BookcardProps {
     book?: Book,
     isEdit: boolean
 }
-
 
 const BookForm: React.FC<BookcardProps> = ({ book, isEdit }) => {
     const [formData, setFormData] = useState({
@@ -51,11 +49,13 @@ const BookForm: React.FC<BookcardProps> = ({ book, isEdit }) => {
     };
     const convertFormDataToBook = (formData: Book): Book => {
         const bookId = book ? book.id : null;
+        const cleanedTags: string[] = tags.map( (tag: string) => tag.replace('#', ""))
+        console.log(cleanedTags)
         const convertedBook: Book = {
             id: bookId,
             title: formData.title,
             author: formData.author,
-            tags: tags,
+            tags: cleanedTags,
             cover: formData.cover,
             rating: formData.rating,
             information: formData.information
