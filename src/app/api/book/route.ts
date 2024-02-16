@@ -4,6 +4,8 @@ import prisma from "@/app/lib/prisma";
 import { randomUUID } from "crypto";
 import { writeFile, unlink } from "fs/promises";
 
+export async function GET(request: NextRequest) {}
+
 export async function DELETE(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const bookId: string = searchParams.get("id");
