@@ -9,12 +9,14 @@ export async function GET(request: NextRequest) {}
 export async function DELETE(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const bookId: string = searchParams.get("id");
-  await prisma.book.delete({
+  const book = await prisma.book.delete({
     where: {
       id: bookId,
     },
   });
-  await deleteImage(bookId);
+  const oldImagePath = "./public/tmp/" + book.cover;
+  console.log(oldImagePath);
+  unlink(oldImagePath);
   return NextResponse.json({ success: true });
 }
 

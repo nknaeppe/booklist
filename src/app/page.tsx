@@ -1,6 +1,6 @@
-import Bookcard from './components/bookcard';
 import prisma from './lib/prisma';
 import Book from "./components/Book";
+import Bookcard from './components/Bookcard';
 
 
 export default async function Home() {
